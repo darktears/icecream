@@ -344,6 +344,7 @@ if test -n "$clang"; then
     # In case clang is installed elsewhere.
     stripprefix=$(dirname $(dirname $added_clang))
     add_file $added_clang /usr/bin/clang
+    add_file $added_clang /usr/bin/clang++
     # HACK: Older icecream remotes have /usr/bin/{gcc|g++} hardcoded and wouldn't
     # call /usr/bin/clang at all. So include a wrapper binary that will call gcc or clang
     # depending on an extra argument added by icecream.
@@ -386,6 +387,8 @@ if test "$is_darwin" = 1; then
     add_file /usr/bin/g++
     real_file=$(/usr/bin/as -micha -- < /dev/null 2>&1 | sed -n 's,^[^/]*\(/[^ :]*\).*,\1,p')
     add_file $(abs_path "$real_file")
+else
+    add_file /usr/bin/objcopy
 fi
 
 if test "$is_freebsd" = 1; then

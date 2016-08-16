@@ -746,7 +746,7 @@ bool analyse_argv(const char * const *argv, CompileJob &job, bool icerun, list<s
 #endif
                 job.setLanguage(CompileJob::Lang_CXX);
             } else if (ext == "mi" || ext == "m") {
-                job.setLanguage(CompileJob::Lang_OBJC);
+                always_local = true;
             } else if (ext == "mii" || ext == "mm"
                        || ext == "M") {
                 job.setLanguage(CompileJob::Lang_OBJCXX);
